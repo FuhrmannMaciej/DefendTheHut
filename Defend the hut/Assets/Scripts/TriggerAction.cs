@@ -9,7 +9,7 @@ public class TriggerAction : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
         {
-        moveEnemy = GameObject.Find("Enemy").GetComponent<MoveEnemy>();
+        moveEnemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<MoveEnemy>();
         }
 
     // Update is called once per frame

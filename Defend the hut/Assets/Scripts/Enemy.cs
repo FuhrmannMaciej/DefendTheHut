@@ -43,7 +43,10 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDied()
         {
-        Destroy(this.gameObject);
-        IsDead = true;
+        if (!IsDead)
+            {
+            Destroy(this.gameObject);
+            IsDead = true;
+            }
         }
     }

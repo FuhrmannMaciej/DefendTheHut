@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1317020879349215506}
   - component: {fileID: 1317020879349215507}
   - component: {fileID: 1317020879349215504}
-  - component: {fileID: 1317020879349215505}
   - component: {fileID: 1317020879349215509}
-  - component: {fileID: 1317020879349215508}
   - component: {fileID: 1317020879349215511}
-  m_Layer: 0
+  - component: {fileID: 1317020879349215508}
+  - component: {fileID: 8927891240707397723}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1317020879349215505
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317020879349215534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1317020879349215509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +93,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168e73d2b3ade07488e8c3a933964749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 0
+  playerScript: {fileID: 3538141390160419837, guid: e8d933c3a1d702d48aad0fb5c095551b,
+    type: 3}
+  enemyHealth: 50
   IsDead: 0
+--- !u!114 &1317020879349215511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317020879349215534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9339b0c474f03734298149e4d740d355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!54 &1317020879349215508
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,16 +126,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 108
   m_CollisionDetection: 0
---- !u!114 &1317020879349215511
-MonoBehaviour:
+--- !u!136 &8927891240707397723
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317020879349215534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9339b0c474f03734298149e4d740d355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

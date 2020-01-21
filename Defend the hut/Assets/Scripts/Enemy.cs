@@ -5,18 +5,18 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
     {
     private float enemyDamage = 5;
-    private Player player;
+    public Player playerScript;
     private float attackRate = 3;
     public float enemyHealth;
-    private float startEnemyHealth = 50;
+    private float enemyHealthStart = 50;
 
     public bool IsDead = false;
 
     // Start is called before the first frame update
     private void Start()
         {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        enemyHealth = startEnemyHealth;
+        SetMaxEnemyHealth();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
     // Update is called once per frame
@@ -24,11 +24,12 @@ public class Enemy : MonoBehaviour
         {
         }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
         {
-        if (collision.gameObject.CompareTag("WallTrigger"))
+        if (other.gameObject.CompareTag("WallTrigger"))
             {
             StartCoroutine(Attack());
+            Debug.Log("Attacking!");
             }
         }
 
@@ -36,16 +37,26 @@ public class Enemy : MonoBehaviour
         {
         while (!IsDead)
             {
-            player.playerHealth -= enemyDamage;
+            playerScript.HurtPlayer(enemyDamage);
             yield return new WaitForSeconds(attackRate);
             }
+        }
+
+    public void EnemyHurt(float damage)
+        {
+        enemyHealth -= damage;
+        }
+
+    public void SetMaxEnemyHealth()
+        {
+        enemyHealth = enemyHealthStart;
         }
 
     public void EnemyDied()
         {
         if (!IsDead)
             {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             IsDead = true;
             }
         }

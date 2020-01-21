@@ -104,4 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69732e60accbf514e95d786c12031716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 0
+  playerHealth: 100
+  enemyScript: {fileID: 1317020879349215509, guid: 40e82033b40cd7143bd610c0c7cd971e,
+    type: 3}

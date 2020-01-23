@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
         {
+        enemyScript = GameObject.FindGameObjectWithTag(enemyTag).GetComponent<Enemy>();
         InvokeRepeating("UpdateTarget", 0f, 1f);
         SetStartHealth();
         }

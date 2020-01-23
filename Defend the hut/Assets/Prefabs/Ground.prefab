@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 348301783978458231}
   - component: {fileID: 348301783978458230}
   - component: {fileID: 348301783978457993}
-  - component: {fileID: 348301783978457992}
+  - component: {fileID: 5303291364489362316}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &348301783978457992
+--- !u!65 &5303291364489362316
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

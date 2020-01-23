@@ -37,7 +37,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnEnemy(GameObject enemy)
         {
-        spawnPosition = new Vector3(transform.position.x, transform.position.y + 1, Random.Range(-3.3f, 3.3f));
+        spawnPosition = new Vector3(transform.position.x, transform.position.y + .5f, Random.Range(-3.3f, 3.3f));
         Instantiate(enemy, spawnPosition, transform.rotation);
         enemiesAlive++;
         }

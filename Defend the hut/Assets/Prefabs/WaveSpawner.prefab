@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8930366410024459399}
   m_Layer: 0
   m_Name: WaveSpawner
-  m_TagString: Untagged
+  m_TagString: WaveSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2adf855a479eb42b27d7ff3bf369d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1317020879349215534, guid: 40e82033b40cd7143bd610c0c7cd971e,
-    type: 3}
-  enemiesAlive: 0
   timeBetweenWaves: 2
+  enemiesAlive: []
+  days:
+  - enemy: {fileID: 1317020879349215534, guid: 40e82033b40cd7143bd610c0c7cd971e, type: 3}
+    count: 2
+    rate: 3
+  - enemy: {fileID: 1317020879349215534, guid: 40e82033b40cd7143bd610c0c7cd971e, type: 3}
+    count: 4
+    rate: 3

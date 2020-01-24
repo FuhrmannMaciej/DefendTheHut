@@ -524,8 +524,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyScript
       value: 
-      objectReference: {fileID: 1317020879349215509, guid: 40e82033b40cd7143bd610c0c7cd971e,
-        type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8d933c3a1d702d48aad0fb5c095551b, type: 3}
 --- !u!1001 &8930366410601117861
@@ -594,49 +593,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 1317020879349215534, guid: 40e82033b40cd7143bd610c0c7cd971e,
-        type: 3}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.data[0].enemy
-      value: 
-      objectReference: {fileID: 1317020879349215534, guid: 40e82033b40cd7143bd610c0c7cd971e,
-        type: 3}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.data[0].count
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.data[0].rate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.data[1].enemy
-      value: 
-      objectReference: {fileID: 1317020879349215534, guid: 40e82033b40cd7143bd610c0c7cd971e,
-        type: 3}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.data[1].count
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930366410024459399, guid: 45492dfbcbb931f45b0847f3908d1251,
-        type: 3}
-      propertyPath: days.Array.data[1].rate
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45492dfbcbb931f45b0847f3908d1251, type: 3}

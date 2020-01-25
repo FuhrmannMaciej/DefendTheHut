@@ -11,8 +11,7 @@ public class Player : MonoBehaviour
     private float playerDamage = 30;
     private Ray ray;
     private RaycastHit hit;
-
-    private WaveSpawner waveSpawner;
+    private TouchPhase touchPhase = TouchPhase.Began;
 
     public string enemyTag = "Enemy";
 
@@ -22,8 +21,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
         {
-        waveSpawner = GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>();
-        InvokeRepeating("UpdateTarget", 0f, 1f);
         SetStartHealth();
         }
 
@@ -34,20 +31,30 @@ public class Player : MonoBehaviour
             {
             PlayerDied();
             }
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if (IsScreenTouched())
             {
-            if (Input.GetMouseButtonDown(0) && isReloaded)
-                {
-                Shoot();
-                StartCoroutine(Reload());
-                }
+            UpdateTarget();
+            Shoot();
+            StartCoroutine(Reload());
+            }
+        }
+
+    private bool IsScreenTouched()
+        {
+        if (Input.touchCount == 1 && isReloaded && Input.GetTouch(0).phase == touchPhase)
+            {
+            ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            return true;
+            }
+        else
+            {
+            return false;
             }
         }
 
     private void Shoot()
         {
-        if (hit.collider.gameObject.CompareTag(enemyTag))
+        if (enemyScript != null)
             {
             Debug.Log("Shooting!");
 
@@ -87,30 +94,20 @@ public class Player : MonoBehaviour
 
     private void UpdateTarget()
         {
-        GameObject nearestEnemy = null;
-        foreach (GameObject enemy in waveSpawner.enemiesAlive)
+        GameObject touchedObject = null;
+
+        if (Physics.Raycast(ray, out hit))
             {
-            if (Input.touchCount == 1)
+            if (hit.collider != null)
                 {
-                Touch touch = Input.GetTouch(0);
-                //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                var ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hitInfo;
-                Vector3 enemyPosition = Camera.main.ScreenToWorldPoint(enemy.transform.position);
-                if (Physics.Raycast(ray, out hitInfo))
-                    {
-                    if (hitInfo.point == enemyPosition)
-                        {
-                        nearestEnemy = enemy;
-                        Debug.Log("Nearest enemy set");
-                        }
-                    }
+                touchedObject = hit.transform.gameObject;
+                Debug.Log(touchedObject);
                 }
             }
 
-        if (nearestEnemy != null)
+        if (touchedObject != null && touchedObject.CompareTag(enemyTag))
             {
-            enemyScript = nearestEnemy.GetComponent<Enemy>();
+            enemyScript = touchedObject.GetComponent<Enemy>();
             Debug.Log("Accessing script");
             }
         else

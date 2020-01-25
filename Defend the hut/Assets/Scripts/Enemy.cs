@@ -9,12 +9,14 @@ public class Enemy : MonoBehaviour
     private float attackRate = 3;
     public float enemyHealth;
     private float enemyHealthStart = 50;
+    private WaveSpawner waveSpawner;
 
     public bool IsDead = false;
 
     // Start is called before the first frame update
     private void Start()
         {
+        waveSpawner = GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>();
         SetMaxEnemyHealth();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
@@ -58,6 +60,7 @@ public class Enemy : MonoBehaviour
             {
             Destroy(gameObject);
             IsDead = true;
+            waveSpawner.enemiesAlive--;
             }
         }
     }

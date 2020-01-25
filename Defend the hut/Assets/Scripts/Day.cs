@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Day
     {
-    public GameObject enemy;
-    public int count;
-    public float rate;
+    public EnemyBlueprint[] enemiesPerDay;
+    public int dayCount;
+    public float lengthOfDay = 90f;
     }

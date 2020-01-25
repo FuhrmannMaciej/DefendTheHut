@@ -5,13 +5,11 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
     {
     private Vector3 spawnPosition;
-    public float timeBetweenWaves = 3;
-
-    public List<GameObject> enemiesAlive = new List<GameObject>();
-
-    private int dayCount = 0;
+    public int enemiesAlive = 0;
+    public EnemyBlueprint enemyBlueprint;
 
     public Day[] days;
+    private Day day;
 
     // Start is called before the first frame update
     private void Start()
@@ -26,25 +24,29 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnDayWave()
         {
-        Day day = days[dayCount];
+        day = days[day.dayCount];
 
-        for (int i = 0; i < day.count; i++)
+        for (int i = 0; i < day.enemiesPerDay.Length; i++)
             {
-            SpawnEnemy(day.enemy);
-            yield return new WaitForSeconds(timeBetweenWaves);
+            SpawnEnemy(enemyBlueprint.enemies[i]);
+            yield return new WaitForSeconds(day.rate);
             }
+
         dayCount++;
         }
 
     private void SpawnEnemy(GameObject enemy)
         {
-        spawnPosition = new Vector3(transform.position.x, transform.position.y + .5f, Random.Range(-3.3f, 3.3f));
-        GameObject enemyAlive = Instantiate(enemy, spawnPosition, transform.rotation);
-        AddAliveEnemy(enemyAlive);
+        spawnPosition = new Vector3(transform.position.x, transform.position.y + 1f, Random.Range(-3.3f, 3.3f));
+        Instantiate(enemy, spawnPosition, transform.rotation);
+        enemiesAlive++;
         }
 
-    private void AddAliveEnemy(GameObject enemy)
+    private void dayLengthTimer()
         {
-        enemiesAlive.Add(enemy);
+        while (day.lengthOfDay > 0)
+            {
+            day.lengthOfDay -= Time.deltaTime;
+            }
         }
     }

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3538141390160419824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.08, y: 3, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 6}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3538141390160419824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -107,3 +107,4 @@ MonoBehaviour:
   playerHealth: 100
   enemyScript: {fileID: 1317020879349215509, guid: 40e82033b40cd7143bd610c0c7cd971e,
     type: 3}
+  enemyTag: Enemy

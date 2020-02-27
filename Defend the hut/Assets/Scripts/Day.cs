@@ -6,6 +6,6 @@ using UnityEngine;
 public class Day
     {
     public EnemyBlueprint[] enemiesPerDay;
-    public int dayCount;
+    public int totalEnemyCountOfDay;
     public float lengthOfDay = 90f;
     }

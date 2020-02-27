@@ -26,9 +26,9 @@ public class Enemy : MonoBehaviour
         {
         }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
         {
-        if (other.gameObject.CompareTag("WallTrigger"))
+        if (collision.gameObject.CompareTag("WallTrigger"))
             {
             StartCoroutine(Attack());
             Debug.Log("Attacking!");
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Attack()
         {
-        while (!IsDead)
+        while (!IsDead && playerScript.playerHealth >= 0)
             {
             playerScript.HurtPlayer(enemyDamage);
             yield return new WaitForSeconds(attackRate);

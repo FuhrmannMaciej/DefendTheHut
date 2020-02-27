@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
     {
-    private Vector3 spawnPosition;
+    private Vector2 spawnPosition;
     public int enemiesAlive = 0;
-    public EnemyBlueprint enemyBlueprint;
 
     public Day[] days;
     private Day day;
+    private int dayIndex = 0;
+    private EnemyBlueprint enemyToSpawn;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,33 +21,41 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     private void Update()
         {
+        timerPerDay();
         }
 
     private IEnumerator SpawnDayWave()
         {
-        day = days[day.dayCount];
-
-        for (int i = 0; i < day.enemiesPerDay.Length; i++)
+        if (days.Length > dayIndex)
             {
-            SpawnEnemy(enemyBlueprint.enemies[i]);
-            yield return new WaitForSeconds(day.rate);
-            }
+            day = days[dayIndex];
+            while (day.lengthOfDay > 5)
+                {
+                enemyToSpawn = day.enemiesPerDay[Random.Range(0, day.enemiesPerDay.Length)];
+                SpawnEnemy(enemyToSpawn.enemy);
+                yield return new WaitForSeconds(enemyToSpawn.enemyRate);
+                }
 
-        dayCount++;
+            dayIndex++;
+            }
         }
 
     private void SpawnEnemy(GameObject enemy)
         {
-        spawnPosition = new Vector3(transform.position.x, transform.position.y + 1f, Random.Range(-3.3f, 3.3f));
+        spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-0.6f, 0.6f));
         Instantiate(enemy, spawnPosition, transform.rotation);
         enemiesAlive++;
         }
 
-    private void dayLengthTimer()
+    private void timerPerDay()
         {
-        while (day.lengthOfDay > 0)
+        if (day.lengthOfDay > 0)
             {
             day.lengthOfDay -= Time.deltaTime;
+            }
+        else
+            {
+            StartCoroutine(SpawnDayWave());
             }
         }
     }

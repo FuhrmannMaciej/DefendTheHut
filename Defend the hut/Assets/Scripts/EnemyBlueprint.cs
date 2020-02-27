@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EnemyBlueprint : MonoBehaviour
+public class EnemyBlueprint
     {
     public GameObject enemy;
     public int enemyCount;

@@ -9,8 +9,9 @@ public class Player : MonoBehaviour
 
     public Enemy enemyScript;
     private float playerDamage = 30;
-    private Ray ray;
-    private RaycastHit hit;
+    private Vector3 ray;
+    private Vector2 tapPosition;
+    private RaycastHit2D hit;
     private TouchPhase touchPhase = TouchPhase.Began;
 
     public string enemyTag = "Enemy";
@@ -43,7 +44,8 @@ public class Player : MonoBehaviour
         {
         if (Input.touchCount == 1 && isReloaded && Input.GetTouch(0).phase == touchPhase)
             {
-            ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            ray = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            tapPosition = new Vector2(ray.x, ray.y);
             return true;
             }
         else
@@ -90,20 +92,22 @@ public class Player : MonoBehaviour
     private void PlayerDied()
         {
         Debug.Log("GameOver!");
+        Time.timeScale = 0.0f;
         }
 
     private void UpdateTarget()
         {
         GameObject touchedObject = null;
+        hit = Physics2D.Raycast(tapPosition, Vector2.zero);
 
-        if (Physics.Raycast(ray, out hit))
+        //    if (Physics2D.Raycast(tapPosition, Vector2.zero))
+        //       {
+        if (hit.collider != null)
             {
-            if (hit.collider != null)
-                {
-                touchedObject = hit.transform.gameObject;
-                Debug.Log(touchedObject);
-                }
+            touchedObject = hit.transform.gameObject;
+            Debug.Log(touchedObject);
             }
+        //    }
 
         if (touchedObject != null && touchedObject.CompareTag(enemyTag))
             {

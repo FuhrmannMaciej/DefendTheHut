@@ -19,13 +19,14 @@ public class MoveEnemy : MonoBehaviour
 
     private void Move()
         {
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
         {
-        if (other.gameObject.CompareTag("WallTrigger"))
+        if (collision.gameObject.CompareTag("WallTrigger"))
             {
+            Debug.Log("Colliding");
             enabled = false;
             }
         }

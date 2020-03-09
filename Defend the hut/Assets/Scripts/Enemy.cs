@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
         {
         if (!IsDead)
             {
-            Destroy(gameObject);
+            waveSpawner.enemyToSpawn.SetActive(false);
             IsDead = true;
             waveSpawner.enemiesAlive--;
             }

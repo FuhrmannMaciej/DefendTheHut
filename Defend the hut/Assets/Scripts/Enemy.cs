@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
     {
-    private float enemyDamage = 5;
+    private int enemyDamage = 5;
     public Player playerScript;
-    private float attackRate = 3;
-    public float enemyHealth;
-    private float enemyHealthStart = 50;
+    private int attackRate = 3;
+    public int enemyHealth;
+    private int enemyHealthStart = 50;
     private WaveSpawner waveSpawner;
 
     public bool IsDead = false;
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-    public void EnemyHurt(float damage)
+    public void EnemyHurt(int damage)
         {
         enemyHealth -= damage;
         }
@@ -58,9 +58,9 @@ public class Enemy : MonoBehaviour
         {
         if (!IsDead)
             {
-            waveSpawner.enemyToSpawn.SetActive(false);
             IsDead = true;
             waveSpawner.enemiesAlive--;
+            waveSpawner.enemyToSpawn.SetActive(false);
             }
         }
     }

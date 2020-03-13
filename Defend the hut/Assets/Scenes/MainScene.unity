@@ -519,7 +519,7 @@ MonoBehaviour:
   days:
   - enemiesPerDay: []
     totalEnemyCountOfDay: 0
-    lengthOfDay: 0
+    lengthOfDay: 90
   enemyToSpawn: {fileID: 0}
 --- !u!1001 &1661240341
 PrefabInstance:

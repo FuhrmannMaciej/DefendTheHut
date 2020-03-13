@@ -67,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -104,7 +105,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69732e60accbf514e95d786c12031716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 0
   enemyScript: {fileID: 1317020879349215509, guid: 40e82033b40cd7143bd610c0c7cd971e,
     type: 3}
+  weapons:
+  - name: Pistol
+    damage: 50
+    ammoCapacity: 7
+    ammo: 0
+    reloadTime: 2
+    isReloaded: 0
+  equipedWeapon:
+    name: Pistol
+    damage: 20
+    ammoCapacity: 7
+    ammo: 0
+    reloadTime: 2
+    isReloaded: 1
+  currentWeapon: 0
   enemyTag: Enemy

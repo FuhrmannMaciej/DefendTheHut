@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
     {
-    public float playerHealth;
-    private float playerHealthStart = 100;
+    public int playerHealth;
+    private int playerHealthStart = 100;
 
     public Enemy enemyScript;
-    private float playerDamage = 30;
     private Vector3 ray;
     private Vector2 tapPosition;
     private RaycastHit2D hit;
     private TouchPhase touchPhase = TouchPhase.Began;
 
-    public string enemyTag = "Enemy";
+    public Weapon[] weapons;
+    public Weapon equipedWeapon;
+    public int currentWeapon = 0;
 
-    private float reloadTime = 2;
-    private bool isReloaded = true;
+    public string enemyTag = "Enemy";
 
     // Start is called before the first frame update
     private void Start()
         {
         SetStartHealth();
+        SetStartWeapon();
         }
 
     // Update is called once per frame
@@ -36,13 +37,16 @@ public class Player : MonoBehaviour
             {
             UpdateTarget();
             Shoot();
-            StartCoroutine(Reload());
+            if (equipedWeapon.ammo <= 0)
+                {
+                StartCoroutine(Reload());
+                }
             }
         }
 
     private bool IsScreenTouched()
         {
-        if (Input.touchCount == 1 && isReloaded && Input.GetTouch(0).phase == touchPhase)
+        if (Input.touchCount == 1 && equipedWeapon.ammo > 0 && Input.GetTouch(0).phase == touchPhase)
             {
             ray = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             tapPosition = new Vector2(ray.x, ray.y);
@@ -58,10 +62,8 @@ public class Player : MonoBehaviour
         {
         if (enemyScript != null)
             {
-            Debug.Log("Shooting!");
-
-            enemyScript.EnemyHurt(playerDamage);
-            isReloaded = false;
+            enemyScript.EnemyHurt(equipedWeapon.damage);
+            equipedWeapon.ammo--;
             if (enemyScript.enemyHealth <= 0)
                 {
                 enemyScript.EnemyDied();
@@ -69,19 +71,25 @@ public class Player : MonoBehaviour
             }
         else
             {
-            isReloaded = false;
+            equipedWeapon.ammo--;
             }
         }
 
     private IEnumerator Reload()
         {
-        yield return new WaitForSeconds(reloadTime);
-        isReloaded = true;
+        yield return new WaitForSeconds(equipedWeapon.reloadTime);
+        equipedWeapon.ammo = equipedWeapon.ammoCapacity;
         }
 
-    public void HurtPlayer(float damage)
+    public void HurtPlayer(int damage)
         {
         playerHealth -= damage;
+        }
+
+    private void SetStartWeapon()
+        {
+        equipedWeapon = weapons[0];
+        equipedWeapon.ammo = equipedWeapon.ammoCapacity;
         }
 
     public void SetStartHealth()
@@ -91,7 +99,6 @@ public class Player : MonoBehaviour
 
     private void PlayerDied()
         {
-        Debug.Log("GameOver!");
         Time.timeScale = 0.0f;
         }
 
@@ -105,14 +112,12 @@ public class Player : MonoBehaviour
         if (hit.collider != null)
             {
             touchedObject = hit.transform.gameObject;
-            Debug.Log(touchedObject);
             }
         //    }
 
         if (touchedObject != null && touchedObject.CompareTag(enemyTag))
             {
             enemyScript = touchedObject.GetComponent<Enemy>();
-            Debug.Log("Accessing script");
             }
         else
             {

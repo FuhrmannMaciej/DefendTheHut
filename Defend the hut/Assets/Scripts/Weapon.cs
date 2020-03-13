@@ -1,0 +1,13 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class Weapon
+    {
+    public string name;
+    public int damage;
+    public int ammoCapacity;
+    public int ammo;
+    public int reloadTime;
+    }

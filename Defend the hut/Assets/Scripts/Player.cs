@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
     {
     public int playerHealth;
-    private int playerHealthStart = 100;
+    private int playerHealthStart = 10000;
 
     public Enemy enemyScript;
     private Vector3 ray;
@@ -18,6 +18,17 @@ public class Player : MonoBehaviour
     public int currentWeapon = 0;
 
     public string enemyTag = "Enemy";
+
+    #region Singleton
+
+    public static Player playerInstance;
+
+    private void Awake()
+        {
+        playerInstance = this;
+        }
+
+    #endregion Singleton
 
     // Start is called before the first frame update
     private void Start()

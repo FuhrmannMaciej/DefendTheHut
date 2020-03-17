@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     private int attackRate = 3;
     public int enemyHealth;
     private int enemyHealthStart = 50;
-    private WaveSpawner waveSpawner;
+    public WaveSpawner waveSpawner;
 
     public bool IsDead = false;
 
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("WallTrigger"))
             {
             StartCoroutine(Attack());
-            Debug.Log("Attacking!");
             }
         }
 
@@ -58,9 +57,12 @@ public class Enemy : MonoBehaviour
         {
         if (!IsDead)
             {
-            IsDead = true;
-            waveSpawner.enemiesAlive--;
-            waveSpawner.enemyToSpawn.SetActive(false);
+            if (waveSpawner.enemyToSpawn != null)
+                {
+                IsDead = true;
+                waveSpawner.enemiesAlive--;
+                waveSpawner.enemyToSpawn.SetActive(false);
+                }
             }
         }
     }

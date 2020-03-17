@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3538141390160419836}
   - component: {fileID: 3538141390160419839}
   - component: {fileID: 3538141390160419838}
-  - component: {fileID: 3538141390160419825}
   - component: {fileID: 3538141390160419837}
   m_Layer: 0
   m_Name: Player
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3538141390160419825
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3538141390160419824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3538141390160419837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,13 +100,11 @@ MonoBehaviour:
     ammoCapacity: 7
     ammo: 0
     reloadTime: 2
-    isReloaded: 0
   equipedWeapon:
     name: Pistol
     damage: 20
     ammoCapacity: 7
     ammo: 0
     reloadTime: 2
-    isReloaded: 1
   currentWeapon: 0
   enemyTag: Enemy

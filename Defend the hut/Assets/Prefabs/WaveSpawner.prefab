@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8930366410024459398}
   - component: {fileID: 193213683059292318}
+  - component: {fileID: 1450295383}
   m_Layer: 0
   m_Name: WaveSpawner
   m_TagString: WaveSpawner
@@ -49,3 +50,21 @@ MonoBehaviour:
     amountToPool: 5
     shouldExpand: 1
   pooledObjects: []
+--- !u!114 &1450295383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930366410024459396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2adf855a479eb42b27d7ff3bf369d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesAlive: 0
+  days:
+  - enemiesPerDay: []
+    totalEnemyCountOfDay: 0
+    lengthOfDay: 90
+  enemyToSpawn: {fileID: 0}

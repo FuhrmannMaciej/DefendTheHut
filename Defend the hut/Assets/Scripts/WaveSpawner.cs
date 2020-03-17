@@ -29,11 +29,12 @@ public class WaveSpawner : MonoBehaviour
         if (days.Length > dayIndex)
             {
             day = days[dayIndex];
+
             while (day.lengthOfDay > 5)
                 {
                 // enemyToSpawn = day.enemiesPerDay[Random.Range(0, day.enemiesPerDay.Length)];
                 SpawnEnemy();
-                yield return new WaitForSeconds(4f);
+                yield return new WaitForSeconds(8f);
                 }
 
             dayIndex++;
@@ -45,8 +46,11 @@ public class WaveSpawner : MonoBehaviour
         //  spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-4.0f, 3f));
         //   Instantiate(enemy, spawnPosition, transform.rotation);
         enemyToSpawn = ObjectPooler.SharedInstance.GetPooledObject(0);
-        enemyToSpawn.SetActive(true);
-        enemiesAlive++;
+        if (enemyToSpawn != null)
+            {
+            enemyToSpawn.SetActive(true);
+            enemiesAlive++;
+            }
         }
 
     private void timerPerDay()

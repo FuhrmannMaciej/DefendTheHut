@@ -49,6 +49,7 @@ public class ObjectPooler : MonoBehaviour
             if (!pooledObjectsList[index][i % curSize].activeInHierarchy)
                 {
                 positions[index] = i % curSize;
+                ResetObject(pooledObjectsList[index][i % curSize]);
                 return pooledObjectsList[index][i % curSize];
                 }
             }
@@ -94,5 +95,14 @@ public class ObjectPooler : MonoBehaviour
             }
         pooledObjectsList.Add(pooledObjects);
         positions.Add(0);
+        }
+
+    private GameObject ResetObject(GameObject objectToReset)
+        {
+        spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-4.0f, 3f));
+        objectToReset.transform.position = spawnPosition;
+        objectToReset.GetComponent<Enemy>().SetMaxEnemyHealth();
+        objectToReset.GetComponent<MoveEnemy>().enabled = true;
+        return objectToReset;
         }
     }

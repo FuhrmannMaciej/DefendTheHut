@@ -11,8 +11,6 @@ public class Enemy : MonoBehaviour
     private int enemyHealthStart = 50;
     public WaveSpawner waveSpawner;
 
-    public bool IsDead = false;
-
     // Start is called before the first frame update
     private void Start()
         {
@@ -36,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Attack()
         {
-        while (!IsDead && playerScript.playerHealth >= 0)
+        while (playerScript.playerHealth >= 0 && !GameManager.instance.isGamePaused)
             {
             playerScript.HurtPlayer(enemyDamage);
             yield return new WaitForSeconds(attackRate);
@@ -55,14 +53,11 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDied()
         {
-        if (!IsDead)
+        if (waveSpawner.enemyToSpawn != null)
             {
-            if (waveSpawner.enemyToSpawn != null)
-                {
-                IsDead = true;
-                waveSpawner.enemiesAlive--;
-                waveSpawner.enemyToSpawn.SetActive(false);
-                }
+            waveSpawner.enemiesAlive--;
+            waveSpawner.enemyToSpawn.SetActive(false);
+            ObjectPooler.SharedInstance.AddObject(waveSpawner.enemyToSpawn);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class WaveSpawner : MonoBehaviour
     private Day day;
     private int dayIndex = 0;
     public GameObject enemyToSpawn;
+
+    public GameObject upgradeMenu;
 
     // Start is called before the first frame update
     private void Start()
@@ -61,7 +64,17 @@ public class WaveSpawner : MonoBehaviour
             }
         else
             {
-            StartCoroutine(SpawnDayWave());
+            Time.timeScale = 0.0f;
+            upgradeMenu.SetActive(true);
+            if (NextDayWave())
+                {
+                upgradeMenu.SetActive(false);
+                StartCoroutine(SpawnDayWave());
+                }
             }
+        }
+
+    private bool NextDayWave()
+        {
         }
     }

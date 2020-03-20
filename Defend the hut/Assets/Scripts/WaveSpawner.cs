@@ -14,6 +14,9 @@ public class WaveSpawner : MonoBehaviour
     public GameObject enemyToSpawn;
 
     public GameObject upgradeMenu;
+    public UpgradeMenu upgradeMenuScript;
+
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,7 +27,7 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     private void Update()
         {
-        timerPerDay();
+        TimerPerDay();
         }
 
     private IEnumerator SpawnDayWave()
@@ -48,6 +51,7 @@ public class WaveSpawner : MonoBehaviour
         {
         //  spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-4.0f, 3f));
         //   Instantiate(enemy, spawnPosition, transform.rotation);
+
         enemyToSpawn = ObjectPooler.SharedInstance.GetPooledObject(0);
         if (enemyToSpawn != null)
             {
@@ -56,7 +60,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-    private void timerPerDay()
+    private void TimerPerDay()
         {
         if (day.lengthOfDay > 0)
             {
@@ -64,17 +68,13 @@ public class WaveSpawner : MonoBehaviour
             }
         else
             {
-            Time.timeScale = 0.0f;
+            gameManager.isGamePaused = true;
             upgradeMenu.SetActive(true);
-            if (NextDayWave())
+            if (upgradeMenuScript.ContinueButton())
                 {
                 upgradeMenu.SetActive(false);
                 StartCoroutine(SpawnDayWave());
                 }
             }
-        }
-
-    private bool NextDayWave()
-        {
         }
     }

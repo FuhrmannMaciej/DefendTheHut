@@ -48,7 +48,7 @@ MonoBehaviour:
   - objectToPool: {fileID: 8725596399101661806, guid: bf5b61c7764e0eb419eba8e5a9ffdffb,
       type: 3}
     amountToPool: 5
-    shouldExpand: 1
+    shouldExpand: 0
   pooledObjects: []
 --- !u!114 &1450295383
 MonoBehaviour:
@@ -64,7 +64,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesAlive: 0
   days:
-  - enemiesPerDay: []
-    totalEnemyCountOfDay: 0
+  - enemiesPerDay:
+    - enemy: {fileID: 8725596399101661806, guid: bf5b61c7764e0eb419eba8e5a9ffdffb,
+        type: 3}
+      enemyCount: 5
+      enemyRate: 7
     lengthOfDay: 90
   enemyToSpawn: {fileID: 0}
+  upgradeMenu: {fileID: 0}
+  upgradeMenuScript: {fileID: 0}
+  gameManager: {fileID: 0}

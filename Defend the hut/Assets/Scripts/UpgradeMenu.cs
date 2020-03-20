@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class UpgradeMenu : MonoBehaviour
     {
-    // Update is called once per frame
-    private void Update()
+    public GameManager gameManager;
+
+    public bool ContinueButton()
         {
+        gameManager.isGamePaused = false;
+        return true;
         }
     }

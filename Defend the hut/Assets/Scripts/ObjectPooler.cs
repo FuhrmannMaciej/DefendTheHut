@@ -59,7 +59,7 @@ public class ObjectPooler : MonoBehaviour
             spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-4.0f, 3f));
             GameObject obj = (GameObject) Instantiate(itemsToPool[index].objectToPool, spawnPosition, Quaternion.identity);
             obj.SetActive(false);
-            //obj.transform.parent = this.transform;
+
             pooledObjectsList[index].Add(obj);
             return obj;
             }
@@ -90,7 +90,7 @@ public class ObjectPooler : MonoBehaviour
             spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-4.0f, 3f));
             GameObject obj = (GameObject) Instantiate(item.objectToPool, spawnPosition, Quaternion.identity);
             obj.SetActive(false);
-            // obj.transform.parent = this.transform;
+
             pooledObjects.Add(obj);
             }
         pooledObjectsList.Add(pooledObjects);

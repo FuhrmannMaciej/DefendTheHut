@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &58334341 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1450295383, guid: 45492dfbcbb931f45b0847f3908d1251,
+    type: 3}
+  m_PrefabInstance: {fileID: 903104566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2adf855a479eb42b27d7ff3bf369d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +205,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.03125, y: 0.109375, z: 0.03125, w: -0.03125}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -255,19 +267,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &498962017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 736777558888515316, guid: 8a3cde422cbcdec43b899bed1158a87f,
-    type: 3}
-  m_PrefabInstance: {fileID: 736777559252535445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &498962022 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 736777558888515315, guid: 8a3cde422cbcdec43b899bed1158a87f,
     type: 3}
   m_PrefabInstance: {fileID: 736777559252535445}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498962017}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb37d3ccf72adc4291cb74acbec0201, type: 3}
@@ -385,17 +391,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1450295383, guid: 45492dfbcbb931f45b0847f3908d1251, type: 3}
-      propertyPath: upgradeMenu
-      value: 
-      objectReference: {fileID: 498962017}
-    - target: {fileID: 1450295383, guid: 45492dfbcbb931f45b0847f3908d1251, type: 3}
       propertyPath: upgradeMenuScript
       value: 
       objectReference: {fileID: 498962022}
-    - target: {fileID: 1450295383, guid: 45492dfbcbb931f45b0847f3908d1251, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1002648192}
     - target: {fileID: 8930366410024459396, guid: 45492dfbcbb931f45b0847f3908d1251,
         type: 3}
       propertyPath: m_Name
@@ -537,18 +535,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c0fbbfeacacc2847b302984d111867d, type: 3}
---- !u!114 &1002648192 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2318753711912367946, guid: 3d65c394b448969438403e4c0d24eedf,
-    type: 3}
-  m_PrefabInstance: {fileID: 2318753711035549130}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fdacfa1ff9bf6f4e90d451b048ade5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1242814257
 GameObject:
   m_ObjectHideFlags: 0
@@ -3441,18 +3427,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736777558888515315, guid: 8a3cde422cbcdec43b899bed1158a87f,
         type: 3}
-      propertyPath: gameManager
+      propertyPath: waveSpawner
       value: 
-      objectReference: {fileID: 1002648192}
+      objectReference: {fileID: 58334341}
     - target: {fileID: 736777558888515316, guid: 8a3cde422cbcdec43b899bed1158a87f,
         type: 3}
       propertyPath: m_Name
       value: UpgradeMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 736777558888515316, guid: 8a3cde422cbcdec43b899bed1158a87f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a3cde422cbcdec43b899bed1158a87f, type: 3}

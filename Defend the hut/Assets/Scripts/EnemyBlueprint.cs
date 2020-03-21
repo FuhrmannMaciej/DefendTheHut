@@ -6,6 +6,4 @@ using UnityEngine;
 public class EnemyBlueprint
     {
     public GameObject enemy;
-    public int enemyCount;
-    public float enemyRate;
     }

@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class UpgradeMenu : MonoBehaviour
     {
-    public GameObject upgradeMenu;
+    public GameObject upgradeUI;
+    public GameObject panelWithDayNum;
     public WaveSpawner waveSpawner;
 
     public void ContinueButton()
         {
-        StartCoroutine(waveSpawner.SpawnDayWave());
         CloseUpgradeMenu();
         }
 
     public void OpenUpgradeMenu()
         {
+        panelWithDayNum.SetActive(true);
         Time.timeScale = 0.0f;
-        upgradeMenu.SetActive(true);
+        upgradeUI.SetActive(true);
         }
 
     public void CloseUpgradeMenu()
         {
         Time.timeScale = 1.0f;
-        upgradeMenu.SetActive(false);
+        upgradeUI.SetActive(false);
+        StartCoroutine(HidePanelWithDayNumber());
+        }
+
+    private IEnumerator HidePanelWithDayNumber()
+        {
+        yield return new WaitForSeconds(4);
+        panelWithDayNum.SetActive(false);
+        StartCoroutine(waveSpawner.SpawnDayWave());
         }
     }

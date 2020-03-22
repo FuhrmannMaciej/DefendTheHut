@@ -9,10 +9,31 @@ public class GameManager : MonoBehaviour
 
     public bool isGamePaused = false;
 
+    #region Singleton
+
+    private static GameManager gameManagerInstance;
+
+    public static GameManager Instance => gameManagerInstance;
+
     private void Awake()
         {
         MakeSingleton();
         }
+
+    private void MakeSingleton()
+        {
+        if (gameManagerInstance != null && gameManagerInstance != this)
+            {
+            Destroy(gameObject);
+            }
+        else
+            {
+            gameManagerInstance = this;
+            DontDestroyOnLoad(gameObject);
+            }
+        }
+
+    #endregion Singleton
 
     private void Update()
         {
@@ -23,19 +44,6 @@ public class GameManager : MonoBehaviour
         else
             {
             isGamePaused = false;
-            }
-        }
-
-    private void MakeSingleton()
-        {
-        if (instance != null)
-            {
-            Destroy(gameObject);
-            }
-        else
-            {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
             }
         }
     }

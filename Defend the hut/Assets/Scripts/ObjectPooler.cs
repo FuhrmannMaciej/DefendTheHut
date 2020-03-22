@@ -68,6 +68,10 @@ public class ObjectPooler : MonoBehaviour
 
     public List<GameObject> GetAllPooledObjects(int index)
         {
+        foreach (GameObject gameobject in pooledObjectsList[index])
+            {
+            ResetObject(gameObject);
+            }
         return pooledObjectsList[index];
         }
 

@@ -21,11 +21,25 @@ public class Player : MonoBehaviour
 
     #region Singleton
 
-    public static Player playerInstance;
+    private static Player playerInstance;
+
+    public static Player Instance { get { return playerInstance; } }
 
     private void Awake()
         {
-        playerInstance = this;
+        MakeSingleton();
+        }
+
+    private void MakeSingleton()
+        {
+        if (playerInstance != null && playerInstance != this)
+            {
+            Destroy(gameObject);
+            }
+        else
+            {
+            playerInstance = this;
+            }
         }
 
     #endregion Singleton

@@ -14,6 +14,32 @@ public class WaveSpawner : MonoBehaviour
     public GameObject enemyToSpawn;
 
     public UpgradeMenu upgradeMenuScript;
+    public GameManager gameManager;
+
+    #region Singleton
+
+    private static WaveSpawner waveSpawnerInstance;
+
+    public static WaveSpawner Instance => waveSpawnerInstance;
+
+    private void Awake()
+        {
+        MakeSingleton();
+        }
+
+    private void MakeSingleton()
+        {
+        if (waveSpawnerInstance != null && waveSpawnerInstance != this)
+            {
+            Destroy(gameObject);
+            }
+        else
+            {
+            waveSpawnerInstance = this;
+            }
+        }
+
+    #endregion Singleton
 
     // Start is called before the first frame update
     private void Start()
@@ -33,16 +59,18 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
+    //REMINDER!! TODO!! panel day number attach to dayindex
+    //spawning should be working now properly
     public IEnumerator SpawnDayWave()
         {
         if (days.Length > dayIndex)
             {
             day = days[dayIndex];
-            //spawns only one enemy in next days fix it !
+
             while (day.lengthOfDay > 5)
                 {
-                SpawnEnemy();
                 yield return new WaitForSeconds(Random.Range(2, 5));
+                SpawnEnemy();
                 }
             }
         }

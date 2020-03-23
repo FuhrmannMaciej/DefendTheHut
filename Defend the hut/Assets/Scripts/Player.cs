@@ -132,13 +132,10 @@ public class Player : MonoBehaviour
         GameObject touchedObject = null;
         hit = Physics2D.Raycast(tapPosition, Vector2.zero);
 
-        //    if (Physics2D.Raycast(tapPosition, Vector2.zero))
-        //       {
         if (hit.collider != null)
             {
             touchedObject = hit.transform.gameObject;
             }
-        //    }
 
         if (touchedObject != null && touchedObject.CompareTag(enemyTag))
             {

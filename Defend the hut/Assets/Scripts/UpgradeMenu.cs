@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
     {
     public GameObject upgradeUI;
     public GameObject panelWithDayNum;
+
     public WaveSpawner waveSpawner;
+    public Text text;
 
     public void ContinueButton()
         {
@@ -27,10 +30,17 @@ public class UpgradeMenu : MonoBehaviour
         StartCoroutine(HidePanelWithDayNumber());
         }
 
-    private IEnumerator HidePanelWithDayNumber()
+    public IEnumerator HidePanelWithDayNumber()
         {
+        UpdatePanelDayNumber();
         yield return new WaitForSeconds(4);
         panelWithDayNum.SetActive(false);
         StartCoroutine(waveSpawner.SpawnDayWave());
+        }
+
+    private void UpdatePanelDayNumber()
+        {
+        panelWithDayNum.SetActive(true);
+        text.text = "Day " + (waveSpawner.dayIndex + 1);
         }
     }

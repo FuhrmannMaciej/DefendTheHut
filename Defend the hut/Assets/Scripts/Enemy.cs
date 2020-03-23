@@ -5,18 +5,18 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
     {
     private int enemyDamage = 5;
-    public Player playerScript;
     private int attackRate = 3;
     public int enemyHealth;
     private int enemyHealthStart = 50;
+
+    public Player playerScript;
     public WaveSpawner waveSpawner;
+    public List<GameObject> activeEnemies;
 
     // Start is called before the first frame update
     private void Start()
         {
-        waveSpawner = GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>();
         SetMaxEnemyHealth();
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Attack()
         {
-        while (playerScript.playerHealth >= 0 && !GameManager.instance.isGamePaused)
+        while (playerScript.playerHealth >= 0)
             {
             playerScript.HurtPlayer(enemyDamage);
             yield return new WaitForSeconds(attackRate);
@@ -53,11 +53,9 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDied()
         {
-        if (waveSpawner.enemyToSpawn != null)
+        if (waveSpawner.enemyToSpawn != null && waveSpawner.enemyToSpawn.activeInHierarchy)
             {
             waveSpawner.enemiesAlive--;
-            waveSpawner.enemyToSpawn.SetActive(false);
-            ObjectPooler.SharedInstance.AddObject(waveSpawner.enemyToSpawn);
             }
         }
     }

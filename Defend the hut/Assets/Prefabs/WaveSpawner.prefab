@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2adf855a479eb42b27d7ff3bf369d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesAlive: 0
+  enemiesAlive: -39
   days:
   - enemiesPerDay:
     - enemy: {fileID: 8725596399101661806, guid: bf5b61c7764e0eb419eba8e5a9ffdffb,
@@ -76,7 +76,12 @@ MonoBehaviour:
     - enemy: {fileID: 8725596399101661806, guid: bf5b61c7764e0eb419eba8e5a9ffdffb,
         type: 3}
     lengthOfDay: 15
+  day:
+    enemiesPerDay: []
+    lengthOfDay: 90
+  dayIndex: 0
   enemyToSpawn: {fileID: 8725596399101661806, guid: bf5b61c7764e0eb419eba8e5a9ffdffb,
     type: 3}
   upgradeMenuScript: {fileID: 0}
   gameManager: {fileID: 0}
+  OP: {fileID: 193213683059292318}

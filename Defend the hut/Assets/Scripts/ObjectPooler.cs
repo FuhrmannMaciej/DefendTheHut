@@ -68,10 +68,6 @@ public class ObjectPooler : MonoBehaviour
 
     public List<GameObject> GetAllPooledObjects(int index)
         {
-        foreach (GameObject gameobject in pooledObjectsList[index])
-            {
-            ResetObject(gameObject);
-            }
         return pooledObjectsList[index];
         }
 
@@ -101,7 +97,7 @@ public class ObjectPooler : MonoBehaviour
         positions.Add(0);
         }
 
-    private GameObject ResetObject(GameObject objectToReset)
+    public GameObject ResetObject(GameObject objectToReset)
         {
         spawnPosition = new Vector2(transform.position.x, transform.position.y + Random.Range(-4.0f, 3f));
         objectToReset.transform.position = spawnPosition;
